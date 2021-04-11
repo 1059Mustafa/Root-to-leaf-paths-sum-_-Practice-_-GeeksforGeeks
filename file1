@@ -1,0 +1,22 @@
+void treePathsSumUtil(Node *root,long long &res,long long curr){
+    if(root==NULL)
+        return;
+        
+    if(root->left == NULL  && root->right == NULL){
+        curr = curr*10 + (root->data);
+        res += curr;
+        return;
+    }
+    
+    treePathsSumUtil(root->left,res,(curr*10)+root->data);
+    treePathsSumUtil(root->right,res,(curr*10)+root->data);
+}
+
+/*You are required to complete below method */
+long long treePathsSum(Node *root)
+{
+    long long res = 0;
+    treePathsSumUtil(root,res,0);
+    
+    return res;
+}
